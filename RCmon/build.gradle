@@ -6,6 +6,14 @@ buildscript {
         classpath 'com.android.tools.build:gradle:0.5+'
     }
 }
+
+repositories {
+    mavenCentral()
+    maven {
+        url project.hasProperty('ligisMavenUrl') ? ligisMavenUrl : "https://raw.github.com/ligi/ligis-mvn-repo/master";
+    }
+}
+
 apply plugin: 'android'
 
 android {
@@ -18,7 +26,7 @@ android {
     }
 
     dependencies {
-        compile fileTree(dir: 'libs', include: 'jmk.jar')
+        compile 'org.ligi:JavaMKLib:0.11'
     }
 
 }
